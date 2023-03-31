@@ -1,7 +1,7 @@
 package com.store.user.services;
 
-import com.store.user.dtos.security.CredentialDto;
-import com.store.user.dtos.security.Token;
+import com.store.user.models.dtos.security.CredentialDto;
+import com.store.user.models.dtos.security.Token;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 

@@ -1,15 +1,18 @@
 package com.store.user.services.impl;
 
 import com.store.user.exception.StatusException;
-import com.store.user.dtos.user.RegisterUserDTO;
 import com.store.user.mappers.UserMapper;
 import com.store.user.models.User;
+import com.store.user.models.dtos.user.RegisterUserDTO;
 import com.store.user.repositories.UserRepository;
 import com.store.user.services.UserService;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.sql.SQLException;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -18,8 +21,12 @@ public class UserServiceImpl implements UserService {
     private UserRepository repository;
 
     @Override
-    public void saveUser(RegisterUserDTO dto){
-        repository.save(UserMapper.fromDTO(dto));
+    public void saveUser(RegisterUserDTO dto) throws SQLException {
+        try {
+            repository.save(UserMapper.fromDTO(dto));
+        }catch (Exception ex) {
+            throw new SQLException("Not is possible save this user");
+        }
     }
 
     @Override

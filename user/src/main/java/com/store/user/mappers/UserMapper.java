@@ -1,9 +1,9 @@
 package com.store.user.mappers;
 
-import com.store.user.dtos.user.RegisterUserDTO;
 import com.store.user.models.Role;
 import com.store.user.models.Roles;
 import com.store.user.models.User;
+import com.store.user.models.dtos.user.RegisterUserDTO;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.Arrays;

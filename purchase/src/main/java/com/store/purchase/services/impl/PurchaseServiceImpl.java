@@ -1,7 +1,7 @@
 package com.store.purchase.services.impl;
 
-import com.store.purchase.client.ProductFeign;
-import com.store.purchase.config.connections.Constants;
+import com.store.purchase.config.client.ProductFeign;
+import com.store.purchase.config.rabbit.RabbitmqConstants;
 import com.store.purchase.dtos.product.ProductDTO;
 import com.store.purchase.dtos.purchase.PurchaseByUserDTO;
 import com.store.purchase.dtos.purchase.PurchaseDTO;
@@ -31,23 +31,27 @@ public class PurchaseServiceImpl implements PurchaseService {
 
     @Override
     public void purchase(PurchaseDTO dto) {
-        Purchase purchase = PurchaseMapper.fromNewPurchase(dto, productFeign.searchProduct(dto.getProductId()));
-        rabbitmqService.sendMessage(Constants.QUEUE_BUY, purchase);
-        repository.save(purchase);
+        ProductDTO product = productFeign.searchProduct(dto.getProductId()).getData();
+        if(product.getQuantity() >= dto.getQuantity()) {
+            repository.save(PurchaseMapper.fromNewPurchase(dto, product));
+            rabbitmqService.sendMessage(RabbitmqConstants.QUEUE_BUY, dto);
+        }else {
+            throw new RuntimeException("The quantity of the product is greater than in stock");
+        }
     }
 
     @Override
     public List<PurchaseByUserDTO> findPurchasesByUser(Long id) {
-        List<Purchase> purchaseDTOList = repository.findByUserId(id).orElseThrow(() -> new NoResultException("No results found"));
+        List<Purchase> purchaseList = repository.findByUserId(id).orElseThrow(() -> new NoResultException("No results found"));
         List<ProductDTO> productList = new ArrayList<>();
-        purchaseDTOList.forEach(purchase -> productList.add(productFeign.searchProduct(purchase.getProductId())));
-        List<PurchaseByUserDTO> purchaseByUserDTO = PurchaseMapper.productDTOListAndPurchaseDTOListToPurchaseByUserDTOList(purchaseDTOList, productList);
+        purchaseList.forEach(purchase -> productList.add(productFeign.searchProduct(purchase.getProductId()).getData()));
+        List<PurchaseByUserDTO> purchaseByUserDTO = PurchaseMapper.productDTOListAndPurchaseDTOListToPurchaseByUserDTOList(purchaseList, productList);
         return purchaseByUserDTO;
     }
 
     @Override
     public PurchaseByUserDTO findPurchaseOfUser(Long userId, String id) {
         Purchase purchase = repository.findByUserIdAndPurchaseId(userId, id).orElseThrow(() -> new NoResultException("No results found"));
-        return PurchaseMapper.productDTOAndPurchaseDTOToPurchaseByUserDTO(purchase, productFeign.searchProduct(purchase.getProductId()));
+        return PurchaseMapper.productDTOAndPurchaseDTOToPurchaseByUserDTO(purchase, productFeign.searchProduct(purchase.getProductId()).getData());
     }
 }

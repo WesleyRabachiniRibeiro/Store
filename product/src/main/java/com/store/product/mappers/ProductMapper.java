@@ -1,6 +1,6 @@
 package com.store.product.mappers;
 
-import com.store.product.dtos.ProductDTO;
+import com.store.product.dtos.product.ProductDTO;
 import com.store.product.models.Product;
 
 public class ProductMapper {

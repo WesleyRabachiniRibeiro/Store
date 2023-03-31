@@ -2,7 +2,8 @@ package com.store.purchase.controllers;
 
 import com.store.purchase.dtos.purchase.PurchaseByUserDTO;
 import com.store.purchase.dtos.purchase.PurchaseDTO;
-import com.store.purchase.dtos.ErrorPresenter;
+import com.store.purchase.models.DataPresenter;
+import com.store.purchase.models.ErrorPresenter;
 import com.store.purchase.services.PurchaseService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -39,12 +40,8 @@ public class PurchaseController {
                     content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorPresenter.class)) })
     })
     public ResponseEntity buy(@RequestBody PurchaseDTO dto) {
-        try {
-            service.purchase(dto);
-            return ResponseEntity.ok().build();
-        }catch (RuntimeException err) {
-            return ResponseEntity.noContent().build();
-        }
+        service.purchase(dto);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/{id}")
@@ -60,12 +57,8 @@ public class PurchaseController {
             @ApiResponse(responseCode  = "500", description = "The server have a error",
                     content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorPresenter.class)) })
     })
-    public ResponseEntity<List<PurchaseByUserDTO>> findPurchasesByUser(@PathVariable("id") Long userId) {
-        try {
-            return ResponseEntity.ok(service.findPurchasesByUser(userId));
-        }catch (RuntimeException err) {
-            return ResponseEntity.noContent().build();
-        }
+    public ResponseEntity<DataPresenter<List<PurchaseByUserDTO>>> findPurchasesByUser(@PathVariable("id") Long userId) {
+        return ResponseEntity.ok(new DataPresenter(service.findPurchasesByUser(userId)));
     }
 
     @GetMapping("/{userId}/{purchaseId}")
@@ -81,12 +74,8 @@ public class PurchaseController {
             @ApiResponse(responseCode  = "500", description = "The server have a error",
                     content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorPresenter.class)) })
     })
-    public ResponseEntity<PurchaseByUserDTO> findPurchaseOfUser(@PathVariable("userId") Long userId, @PathVariable("purchaseId") String id) {
-        try {
-            return ResponseEntity.ok(service.findPurchaseOfUser(userId, id));
-        }catch (RuntimeException err) {
-            return ResponseEntity.noContent().build();
-        }
+    public ResponseEntity<DataPresenter<PurchaseByUserDTO>> findPurchaseOfUser(@PathVariable("userId") Long userId, @PathVariable("purchaseId") String id) {
+        return ResponseEntity.ok(new DataPresenter(service.findPurchaseOfUser(userId, id)));
     }
 
 }

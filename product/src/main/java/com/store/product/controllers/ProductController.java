@@ -1,6 +1,7 @@
 package com.store.product.controllers;
 
-import com.store.product.dtos.ProductDTO;
+import com.store.product.dtos.product.ProductDTO;
+import com.store.product.models.DataPresenter;
 import com.store.product.models.ErrorPresenter;
 import com.store.product.models.Product;
 import com.store.product.services.ProductService;
@@ -39,12 +40,8 @@ public class ProductController {
             @ApiResponse(responseCode  = "500", description = "The server have a error",
                     content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorPresenter.class)) })
     })
-    public ResponseEntity<Product> saveProduct(@RequestBody ProductDTO dto) {
-        try {
-            return ResponseEntity.ok(service.saveProduct(dto));
-        } catch (Exception ex) {
-            return ResponseEntity.badRequest().build();
-        }
+    public ResponseEntity<DataPresenter<Product>> saveProduct(@RequestBody ProductDTO dto) {
+        return ResponseEntity.ok(new DataPresenter(service.saveProduct(dto)));
     }
 
     @GetMapping
@@ -61,12 +58,8 @@ public class ProductController {
             @ApiResponse(responseCode  = "500", description = "The server have a error",
                     content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorPresenter.class)) })
     })
-    public ResponseEntity<List<Product>> productList() {
-        try {
-            return ResponseEntity.ok(service.findAllActiveProducts());
-        } catch (Exception ex) {
-            return ResponseEntity.noContent().build();
-        }
+    public ResponseEntity<DataPresenter<DataPresenter<List<Product>>>> productList() {
+        return ResponseEntity.ok(new DataPresenter(service.findAllActiveProducts()));
     }
 
     @GetMapping("/{id}")
@@ -83,12 +76,8 @@ public class ProductController {
             @ApiResponse(responseCode  = "500", description = "The server have a error",
                     content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorPresenter.class)) })
     })
-    public ResponseEntity<Product> searchProduct(@PathVariable Long id) {
-        try {
-            return ResponseEntity.ok(service.findProduct(id));
-        } catch (Exception ex) {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<DataPresenter<Product>> searchProduct(@PathVariable Long id) {
+        return ResponseEntity.ok(new DataPresenter(service.findProduct(id)));
     }
 
     @PatchMapping("/{id}/active")
@@ -106,12 +95,8 @@ public class ProductController {
                     content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorPresenter.class)) })
     })
     public ResponseEntity activeProduct(@PathVariable Long id) {
-        try {
-            service.activeProduct(id);
-            return ResponseEntity.ok().build();
-        } catch (Exception ex) {
-            return ResponseEntity.notFound().build();
-        }
+        service.activeProduct(id);
+        return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/{id}/deactivate")
@@ -128,11 +113,7 @@ public class ProductController {
                     content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorPresenter.class)) })
     })
     public ResponseEntity deactivateProduct(@PathVariable Long id) {
-        try {
-            service.deactivateProduct(id);
-            return ResponseEntity.ok().build();
-        } catch (Exception ex) {
-            return ResponseEntity.notFound().build();
-        }
+        service.deactivateProduct(id);
+        return ResponseEntity.ok().build();
     }
 }

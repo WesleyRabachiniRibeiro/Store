@@ -1,9 +1,8 @@
 package com.store.user.controllers;
 
-import com.store.user.dtos.user.RegisterUserDTO;
-import com.store.user.dtos.ErrorPresenter;
+import com.store.user.models.ErrorPresenter;
+import com.store.user.models.dtos.user.RegisterUserDTO;
 import com.store.user.services.UserService;
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -15,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.SQLException;
 
 @RestController
 @RequestMapping("/v1/user")
@@ -40,14 +41,10 @@ public class UserController {
             @ApiResponse(responseCode  = "500", description = "The server have a error",
                     content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorPresenter.class)) })
     })
-    public ResponseEntity saveUser(@RequestBody RegisterUserDTO user) {
-        try {
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-            service.saveUser(user);
-            return ResponseEntity.ok().build();
-        }catch (Exception ex) {
-            return ResponseEntity.badRequest().build();
-        }
+    public ResponseEntity saveUser(@RequestBody RegisterUserDTO user) throws SQLException {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        service.saveUser(user);
+        return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/{id}/deactivate")
@@ -64,12 +61,8 @@ public class UserController {
                     content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorPresenter.class)) })
     })
     public ResponseEntity deactivateUser(@PathVariable Long id){
-        try {
-            service.deactivateUser(id);
-            return ResponseEntity.ok().build();
-        } catch (Exception ex) {
-            return ResponseEntity.noContent().build();
-        }
+        service.deactivateUser(id);
+        return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/{id}/active")
@@ -86,11 +79,7 @@ public class UserController {
                     content = { @Content(mediaType = "application/json", schema = @Schema(implementation = ErrorPresenter.class)) })
     })
     public ResponseEntity activeUser(@PathVariable Long id) {
-        try {
-            service.activeUser(id);
-            return ResponseEntity.ok().build();
-        } catch (Exception ex) {
-            return ResponseEntity.noContent().build();
-        }
+        service.activeUser(id);
+        return ResponseEntity.ok().build();
     }
 }

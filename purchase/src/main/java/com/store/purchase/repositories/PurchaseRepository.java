@@ -1,7 +1,6 @@
 package com.store.purchase.repositories;
 
 import com.store.purchase.models.Purchase;
-import jakarta.transaction.Transactional;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.repository.query.Param;

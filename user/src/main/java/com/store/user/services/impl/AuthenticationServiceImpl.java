@@ -2,8 +2,8 @@ package com.store.user.services.impl;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.store.user.dtos.security.CredentialDto;
-import com.store.user.dtos.security.Token;
+import com.store.user.models.dtos.security.CredentialDto;
+import com.store.user.models.dtos.security.Token;
 import com.store.user.models.User;
 import com.store.user.services.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
