@@ -1,8 +1,8 @@
 package com.store.delivery.mappers.purchase;
 
-import com.store.delivery.dtos.purchase.PurchaseDTO;
-import com.store.delivery.dtos.product.ProductDTO;
-import com.store.delivery.dtos.purchase.PurchaseDeliveryDTO;
+import com.store.delivery.models.dtos.purchase.PurchaseDTO;
+import com.store.delivery.models.dtos.product.ProductDTO;
+import com.store.delivery.models.dtos.purchase.PurchaseDeliveryDTO;
 
 public class PurchaseMapper {
 

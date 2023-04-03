@@ -1,7 +1,7 @@
 package com.store.purchase.controllers;
 
-import com.store.purchase.dtos.purchase.PurchaseByUserDTO;
-import com.store.purchase.dtos.purchase.PurchaseDTO;
+import com.store.purchase.models.dtos.purchase.PurchaseByUserDTO;
+import com.store.purchase.models.dtos.purchase.PurchaseDTO;
 import com.store.purchase.models.DataPresenter;
 import com.store.purchase.models.ErrorPresenter;
 import com.store.purchase.services.PurchaseService;

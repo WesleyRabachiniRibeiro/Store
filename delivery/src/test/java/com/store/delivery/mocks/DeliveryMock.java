@@ -1,6 +1,6 @@
 package com.store.delivery.mocks;
 
-import com.store.delivery.dtos.delivery.DeliveryDTO;
+import com.store.delivery.models.dtos.delivery.DeliveryDTO;
 import com.store.delivery.models.Delivery;
 
 import java.time.LocalDate;

@@ -1,7 +1,7 @@
 package com.store.purchase.services;
 
-import com.store.purchase.dtos.purchase.PurchaseByUserDTO;
-import com.store.purchase.dtos.purchase.PurchaseDTO;
+import com.store.purchase.models.dtos.purchase.PurchaseByUserDTO;
+import com.store.purchase.models.dtos.purchase.PurchaseDTO;
 
 import java.util.List;
 

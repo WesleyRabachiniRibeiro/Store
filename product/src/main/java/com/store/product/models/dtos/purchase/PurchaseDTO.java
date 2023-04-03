@@ -1,4 +1,4 @@
-package com.store.delivery.dtos.product;
+package com.store.product.models.dtos.purchase;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,11 +7,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class ProductDTO {
-
+@NoArgsConstructor
+public class PurchaseDTO {
     private Long productId;
-
     private Integer quantity;
 }

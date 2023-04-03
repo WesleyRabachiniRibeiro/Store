@@ -1,6 +1,6 @@
 package com.store.user.models.dtos.user;
 
-import com.store.user.models.Address;
+import com.store.user.models.dtos.address.AddressDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +18,7 @@ public class RegisterUserDTO {
 
     private Integer age;
 
-    private List<Address> address;
+    private List<AddressDTO> address;
 
     private String phone;
 

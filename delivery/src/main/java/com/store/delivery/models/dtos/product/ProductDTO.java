@@ -1,20 +1,15 @@
-package com.store.purchase.dtos.purchase;
+package com.store.delivery.models.dtos.product;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.io.Serializable;
-
-
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class PurchaseDTO implements Serializable {
-
-    private Long userId;
+public class ProductDTO {
 
     private Long productId;
 

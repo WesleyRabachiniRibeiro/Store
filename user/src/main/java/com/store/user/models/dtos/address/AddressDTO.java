@@ -1,4 +1,4 @@
-package com.store.product.dtos.purchase;
+package com.store.user.models.dtos.address;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,8 +7,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class PurchaseProductDTO {
-    private PurchaseDTO purchase;
+@AllArgsConstructor
+public class AddressDTO {
+    private String cep;
+    private Integer number;
 }

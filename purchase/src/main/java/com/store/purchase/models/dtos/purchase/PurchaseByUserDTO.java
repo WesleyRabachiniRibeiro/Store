@@ -1,7 +1,7 @@
-package com.store.purchase.dtos.purchase;
+package com.store.purchase.models.dtos.purchase;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.store.purchase.dtos.product.ProductByUserDTO;
+import com.store.purchase.models.dtos.product.ProductByUserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,6 +1,6 @@
 package com.store.delivery.mocks;
 
-import com.store.delivery.dtos.purchase.PurchaseDTO;
+import com.store.delivery.models.dtos.purchase.PurchaseDTO;
 
 public class PurchaseMock {
 

@@ -40,14 +40,14 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
+        http.csrf().disable().headers().frameOptions().disable().and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers(HttpMethod.POST,"/v1/user").permitAll()
                 .requestMatchers(HttpMethod.POST,"/v1/auth").permitAll()
                 .requestMatchers(AUTH_WHITELIST).permitAll()
-                .anyRequest().authenticated()
+                .anyRequest().permitAll()
                 .and().addFilterBefore(filter,UsernamePasswordAuthenticationFilter.class);
         return http.build();
 

@@ -1,6 +1,6 @@
 package com.store.product.controllers;
 
-import com.store.product.dtos.product.ProductDTO;
+import com.store.product.models.dtos.product.ProductDTO;
 import com.store.product.models.DataPresenter;
 import com.store.product.models.ErrorPresenter;
 import com.store.product.models.Product;

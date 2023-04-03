@@ -2,8 +2,8 @@ package com.store.delivery.services.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.store.delivery.constants.RabbitmqConstants;
-import com.store.delivery.dtos.delivery.DeliveryDTO;
-import com.store.delivery.dtos.purchase.PurchaseDTO;
+import com.store.delivery.models.dtos.delivery.DeliveryDTO;
+import com.store.delivery.models.dtos.purchase.PurchaseDTO;
 import com.store.delivery.mappers.delivery.DeliveryMapper;
 import com.store.delivery.models.Delivery;
 import com.store.delivery.repositories.DeliveryRepository;

@@ -1,10 +1,10 @@
 package com.store.purchase.mappers;
 
-import com.store.purchase.dtos.product.ProductByUserDTO;
-import com.store.purchase.dtos.product.ProductDTO;
-import com.store.purchase.dtos.purchase.PurchaseByUserDTO;
-import com.store.purchase.dtos.purchase.PurchaseDTO;
-import com.store.purchase.dtos.purchase.TotalValueDTO;
+import com.store.purchase.models.dtos.product.ProductByUserDTO;
+import com.store.purchase.models.dtos.product.ProductDTO;
+import com.store.purchase.models.dtos.purchase.PurchaseByUserDTO;
+import com.store.purchase.models.dtos.purchase.PurchaseDTO;
+import com.store.purchase.models.dtos.purchase.TotalValueDTO;
 import com.store.purchase.models.Purchase;
 
 import java.math.BigDecimal;

@@ -1,7 +1,7 @@
 package com.store.purchase.services;
 
 import com.store.purchase.config.client.ProductFeign;
-import com.store.purchase.dtos.purchase.PurchaseByUserDTO;
+import com.store.purchase.models.dtos.purchase.PurchaseByUserDTO;
 import com.store.purchase.mappers.PurchaseMapper;
 import com.store.purchase.mocks.ProductMock;
 import com.store.purchase.mocks.PurchaseMock;

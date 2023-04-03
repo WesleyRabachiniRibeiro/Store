@@ -28,7 +28,7 @@ public class AuthenticationFilter extends OncePerRequestFilter {
         String header = request.getHeader("Authorization");
         String token = null;
         if(header != null && header.startsWith("Bearer "))
-            token = header.substring(7, header.length());
+            token = header.substring(7);
         if(tokenService.verifyToken(token)) {
             User user = userService.findUserbyId(tokenService.returnUserId(token));
             SecurityContextHolder.getContext()

@@ -1,6 +1,6 @@
 package com.store.product.controllers;
 
-import com.store.product.dtos.product.ProductDTO;
+import com.store.product.models.dtos.product.ProductDTO;
 import com.store.product.mocks.ProductMock;
 import com.store.product.models.Product;
 import com.store.product.services.ProductService;

@@ -1,7 +1,7 @@
 package com.store.delivery.controllers;
 
 import com.store.delivery.models.DataPresenter;
-import com.store.delivery.dtos.delivery.DeliveryDTO;
+import com.store.delivery.models.dtos.delivery.DeliveryDTO;
 import com.store.delivery.models.Delivery;
 import com.store.delivery.services.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;

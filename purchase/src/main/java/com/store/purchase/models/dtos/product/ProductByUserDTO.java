@@ -1,5 +1,6 @@
-package com.store.product.dtos.product;
+package com.store.purchase.models.dtos.product;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,9 +12,12 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDTO {
+public class ProductByUserDTO {
+
     private String name;
+
+    @JsonProperty("qtd")
     private Integer quantity;
+
     private BigDecimal value;
-    private String description;
 }

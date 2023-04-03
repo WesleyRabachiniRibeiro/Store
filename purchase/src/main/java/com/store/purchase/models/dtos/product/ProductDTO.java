@@ -1,4 +1,4 @@
-package com.store.purchase.dtos.product;
+package com.store.purchase.models.dtos.product;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

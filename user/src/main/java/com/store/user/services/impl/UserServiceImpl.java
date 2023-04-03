@@ -2,17 +2,22 @@ package com.store.user.services.impl;
 
 import com.store.user.exception.StatusException;
 import com.store.user.mappers.UserMapper;
+import com.store.user.models.Role;
 import com.store.user.models.User;
+import com.store.user.models.dtos.cep.CepDTO;
 import com.store.user.models.dtos.user.RegisterUserDTO;
+import com.store.user.repositories.RoleRepository;
 import com.store.user.repositories.UserRepository;
+import com.store.user.services.CepService;
+import com.store.user.services.RoleService;
 import com.store.user.services.UserService;
-import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -20,12 +25,24 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository repository;
 
+    @Autowired
+    private CepService cepService;
+
+    @Autowired
+    private RoleService roleService;
+
     @Override
     public void saveUser(RegisterUserDTO dto) throws SQLException {
         try {
-            repository.save(UserMapper.fromDTO(dto));
+            List<CepDTO> cepList = cepService.getCep(dto.getAddress());
+            User user = UserMapper.fromDTO(dto,cepList);
+            repository.save(roleService.verifyExistRole(user));
         }catch (Exception ex) {
-            throw new SQLException("Not is possible save this user");
+            if (ex.getMessage() == "Invalid CEP") {
+                throw new RuntimeException(ex.getMessage());
+            }else {
+                throw new SQLException("Not is possible save this user");
+            }
         }
     }
 

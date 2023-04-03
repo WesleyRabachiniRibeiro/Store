@@ -1,7 +1,7 @@
 package com.store.delivery.models;
 
 import com.store.delivery.constants.RedisConstants;
-import com.store.delivery.dtos.purchase.PurchaseDTO;
+import com.store.delivery.models.dtos.purchase.PurchaseDTO;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.redis.core.RedisHash;

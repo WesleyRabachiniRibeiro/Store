@@ -2,10 +2,9 @@ package com.store.product.services.impl;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.store.product.constants.KafkaConstants;
-import com.store.product.dtos.purchase.PurchaseDTO;
-import com.store.product.dtos.purchase.PurchaseProductDTO;
+import com.store.product.models.dtos.purchase.PurchaseProductDTO;
 import com.store.product.exception.StatusException;
-import com.store.product.dtos.product.ProductDTO;
+import com.store.product.models.dtos.product.ProductDTO;
 import com.store.product.mappers.ProductMapper;
 import com.store.product.models.Product;
 import com.store.product.repositories.ProductRepository;

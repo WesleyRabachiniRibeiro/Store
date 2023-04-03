@@ -1,6 +1,6 @@
 package com.store.product.services;
 
-import com.store.product.dtos.product.ProductDTO;
+import com.store.product.models.dtos.product.ProductDTO;
 import com.store.product.models.Product;
 
 import java.util.List;

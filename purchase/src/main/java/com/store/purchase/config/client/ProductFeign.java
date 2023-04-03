@@ -1,6 +1,6 @@
 package com.store.purchase.config.client;
 
-import com.store.purchase.dtos.product.ProductDTO;
+import com.store.purchase.models.dtos.product.ProductDTO;
 
 import com.store.purchase.models.DataPresenter;
 import org.springframework.cloud.openfeign.FeignClient;

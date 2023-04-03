@@ -1,8 +1,8 @@
 package com.store.product.mocks;
 
-import com.store.product.dtos.product.ProductDTO;
-import com.store.product.dtos.purchase.PurchaseDTO;
-import com.store.product.dtos.purchase.PurchaseProductDTO;
+import com.store.product.models.dtos.product.ProductDTO;
+import com.store.product.models.dtos.purchase.PurchaseDTO;
+import com.store.product.models.dtos.purchase.PurchaseProductDTO;
 import com.store.product.models.Product;
 
 import java.math.BigDecimal;

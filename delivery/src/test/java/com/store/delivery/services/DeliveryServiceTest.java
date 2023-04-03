@@ -2,7 +2,7 @@ package com.store.delivery.services;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.store.delivery.dtos.delivery.DeliveryDTO;
+import com.store.delivery.models.dtos.delivery.DeliveryDTO;
 import com.store.delivery.mocks.DeliveryMock;
 import com.store.delivery.mocks.PurchaseMock;
 import com.store.delivery.models.Delivery;

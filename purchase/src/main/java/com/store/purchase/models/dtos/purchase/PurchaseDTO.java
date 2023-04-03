@@ -1,4 +1,4 @@
-package com.store.delivery.dtos.purchase;
+package com.store.purchase.models.dtos.purchase;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,8 +7,9 @@ import lombok.Setter;
 
 import java.io.Serializable;
 
-@Getter
+
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class PurchaseDTO implements Serializable {

@@ -1,4 +1,4 @@
-package com.store.purchase.dtos.purchase;
+package com.store.product.models.dtos.product;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +11,9 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TotalValueDTO {
-
-    private BigDecimal totalValue;
+public class ProductDTO {
+    private String name;
+    private Integer quantity;
+    private BigDecimal value;
+    private String description;
 }

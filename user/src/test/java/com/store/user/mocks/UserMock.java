@@ -3,6 +3,7 @@ package com.store.user.mocks;
 import com.store.user.models.Address;
 import com.store.user.models.Role;
 import com.store.user.models.User;
+import com.store.user.models.dtos.address.AddressDTO;
 import com.store.user.models.dtos.user.RegisterUserDTO;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
 public class UserMock {
 
     public static RegisterUserDTO registryUser() {
-        List<Address> address = new ArrayList<>();
+        List<AddressDTO> address = new ArrayList<>();
         return new RegisterUserDTO("João",16, address,"999999999","joão@email.com","joao123");
     }
 

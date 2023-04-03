@@ -1,7 +1,6 @@
 package com.store.purchase.controllers;
 
-import com.store.purchase.dtos.purchase.PurchaseByUserDTO;
-import com.store.purchase.dtos.purchase.PurchaseDTO;
+import com.store.purchase.models.dtos.purchase.PurchaseDTO;
 import com.store.purchase.mocks.PurchaseMock;
 import com.store.purchase.services.PurchaseService;
 import org.junit.jupiter.api.Test;

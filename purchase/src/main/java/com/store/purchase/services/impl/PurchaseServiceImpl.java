@@ -2,9 +2,9 @@ package com.store.purchase.services.impl;
 
 import com.store.purchase.config.client.ProductFeign;
 import com.store.purchase.config.rabbit.RabbitmqConstants;
-import com.store.purchase.dtos.product.ProductDTO;
-import com.store.purchase.dtos.purchase.PurchaseByUserDTO;
-import com.store.purchase.dtos.purchase.PurchaseDTO;
+import com.store.purchase.models.dtos.product.ProductDTO;
+import com.store.purchase.models.dtos.purchase.PurchaseByUserDTO;
+import com.store.purchase.models.dtos.purchase.PurchaseDTO;
 import com.store.purchase.mappers.PurchaseMapper;
 import com.store.purchase.models.Purchase;
 import com.store.purchase.repositories.PurchaseRepository;
